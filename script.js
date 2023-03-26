@@ -40,11 +40,7 @@ function startHoverOnClick(x){
     const gridBtns = document.querySelectorAll('button');
     gridBtns.forEach((btn) => {
         
-        if(x%2==0){
-            btn.addEventListener('click', createHover);
-        } else{
-            btn.removeEventListener('click',createHover);
-        }
+        btn.addEventListener('click',createHover);
     });
     
 }
@@ -55,21 +51,23 @@ function mE(e){
 
 function createHover(e){
 
-    
     const gridBtns = document.querySelectorAll('button');
     e.target.style.backgroundColor = "black";
     gridBtns.forEach((btn)=>{
-        if(x%2==0){
+        //if buttons have not been clicked, add the hover effect.
+        if(numClicks%2==0){
                btn.addEventListener('mouseenter', mE);
                
         } else{
+            //if buttons are clicked twice, remove the effect.
                btn.removeEventListener('mouseenter',mE);
         }
     });
-    x++;
+    numClicks++;
+   
 }
 
-let x =0;
+let numClicks = 0;
 createHeading();
 generateGrid(16);
 startHoverOnClick(x);
