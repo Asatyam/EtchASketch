@@ -13,9 +13,9 @@ function createHeading(){
       main.appendChild(headingDiv);
     
 }
-function generateGrid(gridSize){
+function generateGrid(gdSize){
 
-    gridSize = 16;
+    let gridSize = gdSize;
     const gridDiv = document.createElement('div');
     gridDiv.setAttribute('class','grid');
 
@@ -35,7 +35,41 @@ function generateGrid(gridSize){
     main.appendChild(gridDiv);
 
 }
+function startHoverOnClick(x){
 
+    const gridBtns = document.querySelectorAll('button');
+    gridBtns.forEach((btn) => {
+        
+        if(x%2==0){
+            btn.addEventListener('click', createHover);
+        } else{
+            btn.removeEventListener('click',createHover);
+        }
+    });
+    
+}
 
+function mE(e){
+     e.target.style.backgroundColor = 'black';
+}
+
+function createHover(e){
+
+    
+    const gridBtns = document.querySelectorAll('button');
+    e.target.style.backgroundColor = "black";
+    gridBtns.forEach((btn)=>{
+        if(x%2==0){
+               btn.addEventListener('mouseenter', mE);
+               
+        } else{
+               btn.removeEventListener('mouseenter',mE);
+        }
+    });
+    x++;
+}
+
+let x =0;
 createHeading();
-generateGrid();
+generateGrid(16);
+startHoverOnClick(x);
