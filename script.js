@@ -94,12 +94,20 @@ function changeColor(){
 
     const colorBtn = document.createElement('button');
     colorBtn.setAttribute('class','color');
-    colorBtn.innerHTML = "Rainbow";
+    colorBtn.innerHTML = "<p>Rainbow</p>";
     colorBtn.addEventListener('click',(e)=>{
       
       colr = getRandomColor();
-      colorBtn.style.backgroundColor = colr;
+      if(numClicks%2==1){
+        colorBtn.style.backgroundColor = getRandomColor();
+      } else{
+        colorBtn.style.backgroundColor = 'black';
+        document.querySelector('.color>p').style.color = "white";
+
+      }
+
       numClicks++;
+      
     });
     main.appendChild(colorBtn);
 }
