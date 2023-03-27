@@ -48,12 +48,12 @@ function startHoverOnClick(x) {
 }
 
 function mE(e) {
-  e.target.style.backgroundColor = 'black';
+  e.target.style.backgroundColor = colr;
 }
 
 function createHover(e) {
-  const gridBtns = document.querySelectorAll('button');
-  e.target.style.backgroundColor = 'black';
+  const gridBtns = document.querySelectorAll('.grid>button');
+  e.target.style.backgroundColor = colr;
   gridBtns.forEach((btn) => {
     if (x % 2 == 0) {
       btn.addEventListener('mouseenter', mE);
@@ -89,6 +89,19 @@ function takeSizeInput(){
     main.appendChild(inputBtn);
 }
 
+function changeColor(){
+
+    const colorBtn = document.createElement('button');
+    colorBtn.setAttribute('class','color');
+    colorBtn.innerHTML = "Change Color";
+    colorBtn.addEventListener('click',(e)=>{
+      
+      colr = getRandomColor();
+      colorBtn.style.backgroundColor = colr;
+    });
+    main.appendChild(colorBtn);
+}
+
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -100,7 +113,9 @@ function getRandomColor() {
 
 
 let x = 0;
+let colr = 'black';
 createHeading();
 takeSizeInput();
+changeColor();
 generateGrid(16);
 startHoverOnClick(x);

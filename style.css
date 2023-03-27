@@ -37,7 +37,7 @@ body{
     align-self: center;
 }
 
-.sizeBtn{
+.sizeBtn,.color{
     width: 120px;
     height: 40px;
     align-self: center;
