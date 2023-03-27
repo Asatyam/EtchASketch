@@ -67,8 +67,9 @@ function createHover(e) {
 function takeSizeInput(){
 
     const inputBtn = document.createElement('button');
+    inputBtn.setAttribute('class','sizeBtn');
     const inputPara = document.createElement('p');
-    inputPara.textContent = "Change Size of the grid :";
+    inputPara.textContent = "Change Size ";
 
     inputBtn.appendChild(inputPara);
     inputBtn.addEventListener('click',function (e){
@@ -87,6 +88,16 @@ function takeSizeInput(){
     });
     main.appendChild(inputBtn);
 }
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 
 let x = 0;
 createHeading();
