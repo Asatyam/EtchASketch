@@ -25,6 +25,7 @@ function generateGrid(gdSize) {
     
     gridDiv = document.createElement('div');
     gridDiv.setAttribute('class', 'grid');
+    main.appendChild(gridDiv);
     
   }
   for (let i = 0; i < gridSize ** 2; i++) {
@@ -38,7 +39,7 @@ function generateGrid(gdSize) {
     gridDiv.appendChild(gridElBtn);
   }
 
-  main.appendChild(gridDiv);
+  
 }
 function startHoverOnClick(x) {
   const gridBtns = document.querySelectorAll('.grid>button');
@@ -48,13 +49,13 @@ function startHoverOnClick(x) {
 }
 
 function mE(e) {
-  e.target.style.backgroundColor = numClicks%2==0 ?"black":getRandomColor();
+  e.target.style.backgroundColor = numClicks%2==0 ?colr:getRandomColor();
 }
 
 function createHover(e) {
   const gridBtns = document.querySelectorAll('.grid>button');
   e.target.style.backgroundColor =
-    numClicks % 2 == 0 ? 'black' : getRandomColor();
+    numClicks % 2 == 0 ? colr : getRandomColor();
   gridBtns.forEach((btn) => {
     if (x % 2 == 0) {
       btn.addEventListener('mouseenter', mE);
@@ -97,11 +98,11 @@ function changeColor(){
     colorBtn.innerHTML = "<p>Rainbow</p>";
     colorBtn.addEventListener('click',(e)=>{
       
-      colr = getRandomColor();
+    
       if(numClicks%2==1){
         colorBtn.style.backgroundColor = getRandomColor();
       } else{
-        colorBtn.style.backgroundColor = 'black';
+        colorBtn.style.backgroundColor = colr;
         document.querySelector('.color>p').style.color = "white";
 
       }
