@@ -10,11 +10,23 @@ function createHeading() {
   headingDiv.appendChild(headingPara);
   main.appendChild(headingDiv);
 }
+
+function resetGrid(){
+
+  const gridDiv = document.querySelector('.grid');
+  gridDiv.innerHTML = "";
+
+}
 function generateGrid(gdSize) {
   let gridSize = gdSize;
-  const gridDiv = document.createElement('div');
-  gridDiv.setAttribute('class', 'grid');
 
+  let gridDiv = document.querySelector('.grid');
+  if(!gridDiv){
+    
+    gridDiv = document.createElement('div');
+    gridDiv.setAttribute('class', 'grid');
+    
+  }
   for (let i = 0; i < gridSize ** 2; i++) {
     const elSize = 960 / gridSize;
     const gridElBtn = document.createElement('button');
@@ -29,7 +41,7 @@ function generateGrid(gdSize) {
   main.appendChild(gridDiv);
 }
 function startHoverOnClick(x) {
-  const gridBtns = document.querySelectorAll('button');
+  const gridBtns = document.querySelectorAll('.grid>button');
   gridBtns.forEach((btn) => {
     btn.addEventListener('click', createHover);
   });
@@ -52,7 +64,32 @@ function createHover(e) {
   x++;
 }
 
+function takeSizeInput(){
+
+    const inputBtn = document.createElement('button');
+    const inputPara = document.createElement('p');
+    inputPara.textContent = "Change Size of the grid :";
+
+    inputBtn.appendChild(inputPara);
+    inputBtn.addEventListener('click',function (e){
+
+      let sizeInput;
+
+      do{
+
+        sizeInput = prompt('Enter the size of the grid (< 100)');
+
+      }while(sizeInput>100);
+
+      resetGrid();
+      generateGrid(sizeInput);
+      startHoverOnClick(x);
+    });
+    main.appendChild(inputBtn);
+}
+
 let x = 0;
 createHeading();
+takeSizeInput();
 generateGrid(16);
 startHoverOnClick(x);
