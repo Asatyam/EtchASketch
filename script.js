@@ -48,12 +48,12 @@ function startHoverOnClick(x) {
 }
 
 function mE(e) {
-  e.target.style.backgroundColor = colr;
+  e.target.style.backgroundColor = getRandomColor();
 }
 
 function createHover(e) {
   const gridBtns = document.querySelectorAll('.grid>button');
-  e.target.style.backgroundColor = colr;
+  e.target.style.backgroundColor = getRandomColor();
   gridBtns.forEach((btn) => {
     if (x % 2 == 0) {
       btn.addEventListener('mouseenter', mE);
@@ -93,7 +93,7 @@ function changeColor(){
 
     const colorBtn = document.createElement('button');
     colorBtn.setAttribute('class','color');
-    colorBtn.innerHTML = "Change Color";
+    colorBtn.innerHTML = "Rainbow";
     colorBtn.addEventListener('click',(e)=>{
       
       colr = getRandomColor();
