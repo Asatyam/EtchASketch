@@ -11,7 +11,12 @@ function createHeading() {
   main.appendChild(headingDiv);
 }
 
+function resetGrid(){
 
+  const gridDiv = document.querySelector('.grid');
+  gridDiv.innerHTML = "";
+
+}
 function generateGrid(gdSize) {
   let gridSize = gdSize;
 
@@ -35,39 +40,23 @@ function generateGrid(gdSize) {
 
   main.appendChild(gridDiv);
 }
-
-function resetGrid() {
-  const gridDiv = document.querySelector('.grid');
-  gridDiv.innerHTML = '';
-}
-
-function startHoverOnClick(colr) {
+function startHoverOnClick(x) {
   const gridBtns = document.querySelectorAll('.grid>button');
   gridBtns.forEach((btn) => {
-    btn.addEventListener('click', (e)=>{
-      createHover(e,colr);
-    });
+    btn.addEventListener('click', createHover);
   });
 }
 
-
-
-function mE(e,colr) {
-  e.target.style.backgroundColor = colr;
+function mE(e) {
+  e.target.style.backgroundColor = 'black';
 }
 
-// function temp(e);
-
-function createHover(e,colr) {
+function createHover(e) {
   const gridBtns = document.querySelectorAll('button');
-  e.target.style.backgroundColor = colr;
+  e.target.style.backgroundColor = 'black';
   gridBtns.forEach((btn) => {
     if (x % 2 == 0) {
-      btn.addEventListener('mouseenter', (e)=>{
-
-        mE(e,colr);
-
-      });
+      btn.addEventListener('mouseenter', mE);
     } else {
       btn.removeEventListener('mouseenter', mE);
     }
@@ -109,15 +98,9 @@ function getRandomColor() {
   return color;
 }
 
-function createRandomGenBtn(){
-
-  const randomGenBtn = document.createElement('button');
-  randomGenBtn.setAttribute('class', 'randomGen');
-  randomGenBtn.setAttribute()
-}
 
 let x = 0;
 createHeading();
 takeSizeInput();
 generateGrid(16);
-startHoverOnClick("black");
+startHoverOnClick(x);
